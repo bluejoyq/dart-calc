@@ -26,7 +26,11 @@ void main() {
     });
 
     test('아무런 인수가 주어지지 않으면 에러가 난다', () {
-      expect(() => Calculator([]).operate(), throwsRangeError);
+      expect(() => Calculator([]).operate(), throwsTooFewArgsException);
+    });
+
+    test('인수가 하나만 주어지면 에러가 난다', () {
+      expect(() => Calculator(['1']).operate(), throwsTooFewArgsException);
     });
   });
 

@@ -18,3 +18,10 @@ class TooManyArgsException implements Exception {
   @override
   String toString() => 'TooManyArgsException: $message';
 }
+
+class TooFewArgsException implements Exception {
+  final String message;
+  const TooFewArgsException([this.message = '']);
+  @override
+  String toString() => 'TooFewArgsException: $message';
+}

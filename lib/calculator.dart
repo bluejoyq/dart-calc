@@ -8,6 +8,8 @@ class Calculator {
   Calculator(List<String> args) {
     if (args.length > 3) {
       throw TooManyArgsException('Args length must be less than 3');
+    } else if (args.length < 2) {
+      throw TooFewArgsException('Args length must be more than 1');
     }
 
     operand1 = AppNumber(num.parse(args[0]));
