@@ -1,22 +1,23 @@
 import 'package:dart_calc/exception.dart';
+import 'package:dart_calc/models/app_number.dart';
 
 class Calculator {
-  num addition(num a, num b) {
+  AppBaseNumber addition(AppBaseNumber a, AppBaseNumber b) {
     return a + b;
   }
 
-  num subtraction(num a, num b) {
+  AppBaseNumber subtraction(AppBaseNumber a, AppBaseNumber b) {
     return a - b;
   }
 
-  num division(num a, num b) {
+  AppBaseNumber division(AppBaseNumber a, AppBaseNumber b) {
     if (b == 0) {
       throw ZeroDivisionException('0으로 나눌 수 없습니다.');
     }
     return a / b;
   }
 
-  num multiplication(num a, num b) {
+  AppBaseNumber multiplication(AppBaseNumber a, AppBaseNumber b) {
     return a * b;
   }
 }
