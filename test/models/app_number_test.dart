@@ -2,6 +2,8 @@ import 'package:dart_calc/exception.dart';
 import 'package:dart_calc/models/app_number.dart';
 import 'package:test/test.dart';
 
+import '../custom_matcher.dart';
+
 void main() {
   group('덧셈', () {
     test('두 정수의 합', () {
@@ -44,8 +46,7 @@ void main() {
     });
 
     test('0으로 나누는 경우', () {
-      expect(() => AppNumber(1) / AppNumber(0),
-          throwsA(isA<ZeroDivisionException>()));
+      expect(() => AppNumber(1) / AppNumber(0), throwsZeroDivisionException);
     });
   });
 

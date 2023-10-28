@@ -1,23 +1,30 @@
-import 'package:dart_calc/exception.dart';
 import 'package:dart_calc/models/app_number.dart';
 
 class Calculator {
-  AppBaseNumber addition(AppBaseNumber a, AppBaseNumber b) {
-    return a + b;
-  }
-
-  AppBaseNumber subtraction(AppBaseNumber a, AppBaseNumber b) {
-    return a - b;
-  }
-
-  AppBaseNumber division(AppBaseNumber a, AppBaseNumber b) {
-    if (b == 0) {
-      throw ZeroDivisionException('0으로 나눌 수 없습니다.');
+  late AppBaseNumber operand1;
+  late AppBaseNumber operand2;
+  late String operator;
+  Calculator(List<String> args) {
+    if (args.length > 3) {
+      throw RangeError('인수가 많습니다.');
     }
-    return a / b;
+    operand1 = AppNumber(num.parse(args[0]));
+    operator = args[1];
+    operand2 = AppNumber(num.parse(args[2]));
   }
 
-  AppBaseNumber multiplication(AppBaseNumber a, AppBaseNumber b) {
-    return a * b;
+  AppBaseNumber operate() {
+    switch (operator) {
+      case '+':
+        return operand1 + operand2;
+      case '-':
+        return operand1 - operand2;
+      case '*':
+        return operand1 * operand2;
+      case '/':
+        return operand1 / operand2;
+      default:
+        throw UnsupportedError('지원하지 않는 연산자입니다.');
+    }
   }
 }
