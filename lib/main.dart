@@ -1,5 +1,4 @@
 import 'package:dart_calc/calculator.dart';
-import 'package:dart_calc/exception.dart';
 
 void main(List<String> args) {
   try {
