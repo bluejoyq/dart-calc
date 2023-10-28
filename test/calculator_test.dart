@@ -1,7 +1,5 @@
 import 'package:dart_calc/calculator.dart';
-import 'package:dart_calc/exception.dart';
 import 'package:test/test.dart';
-
 import 'matcher.dart';
 
 void main() {
@@ -48,6 +46,20 @@ void main() {
 
     test('0으로 나누는 경우', () {
       expect(() => calculator.division(1, 0), throwsZeroDivisionException);
+    });
+  });
+
+  group('곱셈', () {
+    test('두 정수의 곱셈', () {
+      expect(calculator.multiplication(5, 100), 500);
+    });
+
+    test('정수와 실수의 곱셈', () {
+      closeTo(calculator.multiplication(5, 0.1), 0.5);
+    });
+
+    test('두 실수의 곱셈', () {
+      closeTo(calculator.multiplication(0.1, 0.1), 0.01);
     });
   });
 }

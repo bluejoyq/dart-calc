@@ -15,4 +15,8 @@ class Calculator {
     }
     return a / b;
   }
+
+  num multiplication(num a, num b) {
+    return a * b;
+  }
 }
