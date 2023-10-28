@@ -1,4 +1,3 @@
-import 'package:dart_calc/exception.dart';
 import 'package:dart_calc/models/app_number.dart';
 import 'package:test/test.dart';
 

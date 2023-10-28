@@ -1,3 +1,4 @@
+import 'package:dart_calc/exception.dart';
 import 'package:dart_calc/models/app_number.dart';
 
 class Calculator {
@@ -6,30 +7,38 @@ class Calculator {
   String operator = '';
   Calculator(List<String> args) {
     if (args.length > 3) {
-      throw RangeError('인수가 많습니다.');
+      throw TooManyArgsException('Args length must be less than 3');
     }
 
     operand1 = AppNumber(num.parse(args[0]));
     operator = args[1];
     try {
       operand2 = AppNumber(num.parse(args[2]));
-    } catch (_) {
+    } on RangeError catch (_) {
       operand2 = null;
+    } catch (e) {
+      rethrow;
     }
   }
 
   AppBaseNumber operate() {
-    switch (operator) {
-      case '+':
-        return operand1 + operand2!;
-      case '-':
-        return operand1 - operand2!;
-      case '*':
-        return operand1 * operand2!;
-      case '/':
-        return operand1 / operand2!;
-      default:
-        throw UnsupportedError('지원하지 않는 연산자입니다.');
+    try {
+      switch (operator) {
+        case '+':
+          return operand1 + operand2!;
+        case '-':
+          return operand1 - operand2!;
+        case '*':
+          return operand1 * operand2!;
+        case '/':
+          return operand1 / operand2!;
+        default:
+          throw UnsupportedError('Unsupported operator');
+      }
+    } on TypeError catch (_) {
+      throw OperandException('Second Operand is empty');
+    } catch (e) {
+      rethrow;
     }
   }
 }
